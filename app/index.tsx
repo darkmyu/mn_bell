@@ -3,11 +3,11 @@ import { Button } from 'react-native';
 import styled from 'styled-components/native';
 
 export default function Index() {
-  const { toggleTheme } = useThemeContext();
+  const { isDark, toggleTheme } = useThemeContext();
 
   return (
     <StyledView>
-      <StyledText>Edit app/index.tsx to edit this screen.</StyledText>
+      <StyledText>{`isDark: ${isDark}`}</StyledText>
       <Button title="Toggle Theme" onPress={() => toggleTheme()} />
     </StyledView>
   );

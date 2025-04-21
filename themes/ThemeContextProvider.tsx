@@ -41,7 +41,7 @@ function ThemeContextProvider({ children }: Props) {
   };
 
   useEffect(() => {
-    setIsDark(!isDark);
+    setIsDark(colorScheme === 'dark');
   }, [colorScheme]);
 
   return (
