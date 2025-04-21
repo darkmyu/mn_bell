@@ -1,16 +1,26 @@
-import { useColorScheme } from 'nativewind';
-import { Switch, Text, View } from 'react-native';
+import { useThemeContext } from '@/themes/ThemeContextProvider';
+import { Button } from 'react-native';
+import styled from 'styled-components/native';
 
 export default function Index() {
-  const { colorScheme, setColorScheme } = useColorScheme();
+  const { toggleTheme } = useThemeContext();
 
   return (
-    <View className="flex-1 items-center justify-center bg-white dark:bg-black">
-      <Text className="text-black dark:text-white">Edit app/index.tsx to edit this screen.</Text>
-      <Switch
-        value={colorScheme === 'dark'}
-        onValueChange={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}
-      />
-    </View>
+    <StyledView>
+      <StyledText>Edit app/index.tsx to edit this screen.</StyledText>
+      <Button title="Toggle Theme" onPress={() => toggleTheme()} />
+    </StyledView>
   );
 }
+
+const StyledView = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme.colors.surface};
+`;
+
+const StyledText = styled.Text`
+  font-weight: 700;
+  color: ${(props) => props.theme.colors.onSurface};
+`;
