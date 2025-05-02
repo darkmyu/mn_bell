@@ -1,7 +1,7 @@
-import ThemeContextProvider from '@/themes/ThemeContextProvider';
-import ThemeSafeAreaView from '@/themes/ThemeSafeAreaView';
-import ThemeStack from '@/themes/ThemeStack';
-import ThemeStatusBar from '@/themes/ThemeStatusBar';
+import ThemeContextProvider from '@/components/theme/ThemeContextProvider';
+import ThemeSafeAreaView from '@/components/theme/ThemeSafeAreaView';
+import ThemeStack from '@/components/theme/ThemeStack';
+import ThemeStatusBar from '@/components/theme/ThemeStatusBar';
 
 export default function RootLayout() {
   return (
