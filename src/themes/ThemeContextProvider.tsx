@@ -1,3 +1,4 @@
+import { gray, grayDark, teal, tealDark } from '@radix-ui/colors';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import { DefaultTheme, ThemeProvider } from 'styled-components/native';
@@ -20,15 +21,17 @@ const ThemeContext = createContext<ThemeContextValue>(initialValue);
 
 const lightTheme: DefaultTheme = {
   colors: {
-    surface: 'white',
-    onSurface: 'black',
+    primary: teal.teal9,
+    surface: gray.gray1,
+    onSurface: gray.gray12,
   },
 };
 
 const darkTheme: DefaultTheme = {
   colors: {
-    surface: 'black',
-    onSurface: 'white',
+    primary: tealDark.teal9,
+    surface: grayDark.gray1,
+    onSurface: grayDark.gray12,
   },
 };
 
