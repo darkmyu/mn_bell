@@ -1,4 +1,4 @@
-import AlarmList from '@/components/AlarmList';
+import AlarmList from '@/components/alarm/AlarmList';
 
 export default function HomeScreen() {
   return <AlarmList />;
