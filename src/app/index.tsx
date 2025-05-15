@@ -1,5 +1,9 @@
-import AlarmList from '@/components/alarm/AlarmList';
+import { Text, View } from 'react-native';
 
 export default function HomeScreen() {
-  return <AlarmList />;
+  return (
+    <View>
+      <Text>ddd</Text>
+    </View>
+  );
 }

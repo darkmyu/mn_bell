@@ -6,10 +6,10 @@ interface Props {
 }
 
 function Spacer({ vertical = 0, horizontal = 0 }: Props) {
-  return <Container vertical={vertical} horizontal={horizontal} />;
+  return <StyledSpacer vertical={vertical} horizontal={horizontal} />;
 }
 
-const Container = styled.View<Props>`
+const StyledSpacer = styled.View<Props>`
   width: ${(props) => `${props.horizontal}px`};
   height: ${(props) => `${props.vertical}px`};
 `;
