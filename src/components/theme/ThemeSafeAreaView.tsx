@@ -6,7 +6,7 @@ interface Props {
 }
 
 function ThemeSafeAreaView({ children }: Props) {
-  return <StyledSafeAreaView>{children}</StyledSafeAreaView>;
+  return <StyledSafeAreaView edges={['top', 'left', 'right']}>{children}</StyledSafeAreaView>;
 }
 
 const StyledSafeAreaView = styled(SafeAreaView)`
