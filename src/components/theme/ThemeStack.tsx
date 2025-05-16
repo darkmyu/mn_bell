@@ -1,20 +1,13 @@
-import { gray, grayDark } from '@radix-ui/colors';
 import { Stack } from 'expo-router';
-import { useThemeContext } from './ThemeContextProvider';
+import styled from 'styled-components/native';
 
-function ThemeStack() {
-  const { isDark } = useThemeContext();
-
-  return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: {
-          backgroundColor: isDark ? grayDark.gray1 : gray.gray1,
-        },
-      }}
-    />
-  );
-}
+const ThemeStack = styled(Stack).attrs((props) => ({
+  screenOptions: {
+    headerShown: false,
+    contentStyle: {
+      backgroundColor: props.theme.colors.surface,
+    },
+  },
+}))``;
 
 export default ThemeStack;
