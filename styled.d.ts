@@ -6,6 +6,7 @@ declare module 'styled-components/native' {
       primary: string;
       surface: string;
       onSurface: string;
+      container: string;
     };
   }
 }

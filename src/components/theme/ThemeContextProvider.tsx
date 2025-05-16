@@ -22,16 +22,18 @@ const ThemeContext = createContext<ThemeContextValue>(initialValue);
 const lightTheme: DefaultTheme = {
   colors: {
     primary: teal.teal9,
-    surface: gray.gray1,
+    surface: gray.gray3,
     onSurface: gray.gray12,
+    container: gray.gray1,
   },
 };
 
 const darkTheme: DefaultTheme = {
   colors: {
     primary: tealDark.teal9,
-    surface: grayDark.gray1,
+    surface: grayDark.gray3,
     onSurface: grayDark.gray12,
+    container: grayDark.gray1,
   },
 };
 

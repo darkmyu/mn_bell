@@ -1,9 +1,11 @@
-import { Text, View } from 'react-native';
+import AlarmList from '@/components/alarm/AlarmList';
+import Header from '@/components/layout/Header';
 
 export default function HomeScreen() {
   return (
-    <View>
-      <Text>ddd</Text>
-    </View>
+    <>
+      <Header />
+      <AlarmList />
+    </>
   );
 }

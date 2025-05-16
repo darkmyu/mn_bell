@@ -1,0 +1,43 @@
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import styled from 'styled-components/native';
+
+export const Container = styled.View`
+  padding: 16px;
+  border-radius: 8px;
+  background-color: ${(props) => props.theme.colors.container};
+`;
+
+export const Inner = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
+
+export const Content = styled.View`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const Subject = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 4px;
+`;
+
+export const Icon = styled(FontAwesome5)`
+  color: ${(props) => props.theme.colors.primary};
+`;
+
+export const Title = styled.Text`
+  font-size: 12px;
+  font-weight: bold;
+  color: ${(props) => props.theme.colors.primary};
+`;
+
+export const Time = styled.Text`
+  font-size: 32px;
+  font-weight: 600;
+`;
