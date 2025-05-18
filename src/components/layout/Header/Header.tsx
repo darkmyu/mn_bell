@@ -1,10 +1,13 @@
+import Typography from '@/components/common/Typography';
 import * as S from './Header.styles';
 
 function Header() {
   return (
     <S.Container>
       <S.Circle />
-      <S.DateTime>2025-05-16</S.DateTime>
+      <Typography size={15} weight="bold">
+        2025-05-16
+      </Typography>
     </S.Container>
   );
 }

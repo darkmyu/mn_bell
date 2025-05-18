@@ -14,8 +14,3 @@ export const Circle = styled.View`
   border-radius: 100%;
   background-color: gray;
 `;
-
-export const DateTime = styled.Text`
-  font-size: 16px;
-  font-weight: 500;
-`;

@@ -30,14 +30,3 @@ export const Subject = styled.View`
 export const Icon = styled(FontAwesome5)`
   color: ${(props) => props.theme.colors.primary};
 `;
-
-export const Title = styled.Text`
-  font-size: 12px;
-  font-weight: bold;
-  color: ${(props) => props.theme.colors.primary};
-`;
-
-export const Time = styled.Text`
-  font-size: 32px;
-  font-family: ${(props) => props.theme.fonts.semiBold};
-`;
