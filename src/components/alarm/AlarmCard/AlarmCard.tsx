@@ -11,7 +11,7 @@ function AlarmCard() {
             <S.Icon name="walking" size={14} />
             <S.Title>산책</S.Title>
           </S.Subject>
-          <S.Time>08:00</S.Time>
+          <S.Time>123456789</S.Time>
         </S.Content>
         <Toggle />
       </S.Inner>

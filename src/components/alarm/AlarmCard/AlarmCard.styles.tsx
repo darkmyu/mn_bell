@@ -39,5 +39,5 @@ export const Title = styled.Text`
 
 export const Time = styled.Text`
   font-size: 32px;
-  font-weight: 600;
+  font-family: ${(props) => props.theme.fonts.semiBold};
 `;

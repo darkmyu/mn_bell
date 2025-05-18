@@ -1,7 +1,7 @@
 import { gray, grayDark, teal, tealDark } from '@radix-ui/colors';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
-import { DefaultTheme, ThemeProvider } from 'styled-components/native';
+import { DefaultTheme, ThemeColors, ThemeFonts, ThemeProvider } from 'styled-components/native';
 
 interface Props {
   children: React.ReactNode;
@@ -19,22 +19,40 @@ const initialValue: ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue>(initialValue);
 
+const fonts: ThemeFonts = {
+  thin: 'Pretendard-Thin',
+  extraLight: 'Pretendard-ExtraLight',
+  light: 'Pretendard-Light',
+  regular: 'Pretendard-Regular',
+  medium: 'Pretendard-Medium',
+  semiBold: 'Pretendard-SemiBold',
+  bold: 'Pretendard-Bold',
+  extraBold: 'Pretendard-ExtraBold',
+  black: 'Pretendard-Black',
+};
+
+const lightColors: ThemeColors = {
+  primary: teal.teal9,
+  surface: gray.gray3,
+  onSurface: gray.gray12,
+  container: gray.gray1,
+};
+
+const darkColors: ThemeColors = {
+  primary: tealDark.teal9,
+  surface: grayDark.gray3,
+  onSurface: grayDark.gray12,
+  container: grayDark.gray1,
+};
+
 const lightTheme: DefaultTheme = {
-  colors: {
-    primary: teal.teal9,
-    surface: gray.gray3,
-    onSurface: gray.gray12,
-    container: gray.gray1,
-  },
+  colors: lightColors,
+  fonts,
 };
 
 const darkTheme: DefaultTheme = {
-  colors: {
-    primary: tealDark.teal9,
-    surface: grayDark.gray3,
-    onSurface: grayDark.gray12,
-    container: grayDark.gray1,
-  },
+  colors: darkColors,
+  fonts,
 };
 
 function ThemeContextProvider({ children }: Props) {
