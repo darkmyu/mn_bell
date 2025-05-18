@@ -2,6 +2,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
+  gap: 4px;
   padding: 16px;
   border-radius: 8px;
   background-color: ${(props) => props.theme.colors.container};
@@ -23,7 +24,6 @@ export const Content = styled.View`
 export const Subject = styled.View`
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
   gap: 4px;
 `;
 

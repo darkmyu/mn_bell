@@ -2,10 +2,14 @@ import 'styled-components/native';
 
 declare module 'styled-components/native' {
   export interface ThemeColors {
+    white: string;
+    black: string;
     primary: string;
+    secondary: string;
     surface: string;
     onSurface: string;
     container: string;
+    containerHigh: string;
   }
 
   export interface ThemeFonts {

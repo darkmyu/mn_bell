@@ -1,4 +1,4 @@
-import { gray, grayDark, teal, tealDark } from '@radix-ui/colors';
+import { blackA, gray, grayDark, teal, tealDark, tomato, tomatoDark, whiteA } from '@radix-ui/colors';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import { DefaultTheme, ThemeColors, ThemeFonts, ThemeProvider } from 'styled-components/native';
@@ -32,17 +32,25 @@ const fonts: ThemeFonts = {
 };
 
 const lightColors: ThemeColors = {
+  white: whiteA.whiteA12,
+  black: blackA.blackA12,
   primary: teal.teal9,
+  secondary: tomato.tomato9,
   surface: gray.gray3,
   onSurface: gray.gray12,
   container: gray.gray1,
+  containerHigh: gray.gray5,
 };
 
 const darkColors: ThemeColors = {
+  white: whiteA.whiteA12,
+  black: blackA.blackA12,
   primary: tealDark.teal9,
+  secondary: tomatoDark.tomato9,
   surface: grayDark.gray3,
   onSurface: grayDark.gray12,
   container: grayDark.gray1,
+  containerHigh: grayDark.gray5,
 };
 
 const lightTheme: DefaultTheme = {

@@ -1,30 +1,25 @@
-import { Animated, Platform } from 'react-native';
+import { Animated } from 'react-native';
 import styled from 'styled-components/native';
 
-export const Track = styled.View`
-  width: 40px;
-  height: 20px;
-  border-radius: 10px;
-  background-color: ${() => (true ? '#4CD964' : '#ccc')};
-  justify-content: center;
+interface Props {
+  width: number;
+  height: number;
+}
+
+export const Pressable = styled.Pressable<Props>`
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
 `;
 
-export const Thumb = styled(Animated.View)`
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  border-radius: 10px;
-  background-color: white;
+export const Track = styled(Animated.View)<Props>`
+  justify-content: center;
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
+  border-radius: ${(props) => props.height / 2}px;
+`;
 
-  ${Platform.select({
-    ios: `
-      shadow-color: #000;
-      shadow-offset: 0px 2px;
-      shadow-opacity: 0.2;
-      shadow-radius: 2px;
-    `,
-    android: `
-      elevation: 3;
-    `,
-  })}
+export const Thumb = styled(Animated.View)<Props>`
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
+  border-radius: ${(props) => props.height / 2}px;
 `;

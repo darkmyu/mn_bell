@@ -1,9 +1,12 @@
 import Toggle from '@/components/common/Toggle';
 import Typography from '@/components/common/Typography';
+import { useState } from 'react';
 import { Text } from 'react-native';
 import * as S from './AlarmCard.styles';
 
 function AlarmCard() {
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <S.Container>
       <S.Inner>
@@ -18,7 +21,7 @@ function AlarmCard() {
             08:00
           </Typography>
         </S.Content>
-        <Toggle />
+        <Toggle value={isActive} onValueChange={(value) => setIsActive(value)} />
       </S.Inner>
 
       <Text>Description</Text>
