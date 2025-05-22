@@ -7,6 +7,7 @@ declare module 'styled-components/native' {
     primary: string;
     secondary: string;
     surface: string;
+    onSurfaceLow: string;
     onSurface: string;
     container: string;
     containerHigh: string;
