@@ -20,7 +20,7 @@ export const Content = styled.View`
   gap: 4px;
 `;
 
-export const Subject = styled.View`
+export const Topic = styled.View`
   display: flex;
   flex-direction: row;
   gap: 4px;

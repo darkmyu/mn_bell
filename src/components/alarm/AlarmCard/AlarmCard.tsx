@@ -14,12 +14,12 @@ function AlarmCard() {
     <S.Container>
       <S.Inner>
         <S.Content>
-          <S.Subject>
+          <S.Topic>
             <FontAwesome6 name="bowl-food" size={14} color={theme.colors.primary} />
             <Typography size={12} color="primary" weight="bold">
               식사
             </Typography>
-          </S.Subject>
+          </S.Topic>
           <Typography size={32} weight="bold">
             08:00
           </Typography>
