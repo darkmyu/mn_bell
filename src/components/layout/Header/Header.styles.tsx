@@ -14,3 +14,9 @@ export const Circle = styled.View`
   border-radius: 100%;
   background-color: gray;
 `;
+
+export const Date = styled.Text`
+  font-size: 15px;
+  font-family: ${(props) => props.theme.fonts.bold};
+  color: ${(props) => props.theme.colors.onSurface};
+`;

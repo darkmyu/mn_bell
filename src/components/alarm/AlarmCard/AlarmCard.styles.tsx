@@ -26,6 +26,18 @@ export const Topic = styled.View`
   gap: 4px;
 `;
 
+export const Subject = styled.Text`
+  font-size: 12px;
+  font-family: ${(props) => props.theme.fonts.bold};
+  color: ${(props) => props.theme.colors.primary};
+`;
+
+export const Time = styled.Text`
+  font-size: 32px;
+  font-family: ${(props) => props.theme.fonts.bold};
+  color: ${(props) => props.theme.colors.onSurface};
+`;
+
 export const Descriptions = styled.View`
   display: flex;
   flex-direction: row;
@@ -37,4 +49,9 @@ export const Description = styled.View`
   flex-direction: row;
   align-items: center;
   gap: 4px;
+`;
+
+export const DescriptionText = styled.Text`
+  color: ${(props) => props.theme.colors.onSurfaceLow};
+  font-family: ${(props) => props.theme.fonts.semiBold};
 `;

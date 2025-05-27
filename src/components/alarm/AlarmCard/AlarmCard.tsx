@@ -1,5 +1,4 @@
 import Toggle from '@/components/common/Toggle';
-import Typography from '@/components/common/Typography';
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useState } from 'react';
@@ -16,34 +15,24 @@ function AlarmCard() {
         <S.Content>
           <S.Topic>
             <FontAwesome6 name="bowl-food" size={14} color={theme.colors.primary} />
-            <Typography size={12} color="primary" weight="bold">
-              식사
-            </Typography>
+            <S.Subject>식사</S.Subject>
           </S.Topic>
-          <Typography size={32} weight="bold">
-            08:00
-          </Typography>
+          <S.Time>08:00</S.Time>
         </S.Content>
         <Toggle value={isActive} onValueChange={(value) => setIsActive(value)} />
       </S.Inner>
       <S.Descriptions>
         <S.Description>
           <Feather name="calendar" size={14} color={theme.colors.onSurfaceLow} />
-          <Typography color="onSurfaceLow" weight="semiBold">
-            매일
-          </Typography>
+          <S.DescriptionText>매일</S.DescriptionText>
         </S.Description>
         <S.Description>
           <Feather name="calendar" size={14} color={theme.colors.onSurfaceLow} />
-          <Typography color="onSurfaceLow" weight="semiBold">
-            아카나
-          </Typography>
+          <S.DescriptionText>아카나</S.DescriptionText>
         </S.Description>
         <S.Description>
           <Feather name="calendar" size={14} color={theme.colors.onSurfaceLow} />
-          <Typography color="onSurfaceLow" weight="semiBold">
-            20g
-          </Typography>
+          <S.DescriptionText>20g</S.DescriptionText>
         </S.Description>
       </S.Descriptions>
     </S.Container>

@@ -5,7 +5,9 @@ declare module 'styled-components/native' {
     white: string;
     black: string;
     primary: string;
+    onPrimary: string;
     secondary: string;
+    onSecondary: string;
     surface: string;
     onSurfaceLow: string;
     onSurface: string;
