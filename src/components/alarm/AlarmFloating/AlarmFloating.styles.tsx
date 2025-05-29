@@ -12,7 +12,6 @@ export const Backdrop = styled.View`
   width: 100%;
   padding: 32px 16px;
   background-color: ${(props) => props.theme.colors.surface};
-  box-shadow: 0 -10px 10px ${(props) => props.theme.colors.surface};
 `;
 
 export const Floating = styled.Pressable`
