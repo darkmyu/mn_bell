@@ -11,10 +11,10 @@ export const Container = styled.View`
 export const Backdrop = styled.View`
   width: 100%;
   padding: 32px 16px;
-  background-color: ${(props) => props.theme.colors.surface};
+  background-color: ${(props) => props.theme.colors.background};
 `;
 
-export const Floating = styled.Pressable`
+export const Pressable = styled.Pressable`
   height: 48px;
   display: flex;
   flex-direction: row;

@@ -23,15 +23,15 @@ function AlarmCard() {
       </S.Inner>
       <S.Descriptions>
         <S.Description>
-          <Feather name="calendar" size={14} color={theme.colors.onSurfaceLow} />
+          <Feather name="calendar" size={14} color={theme.colors.content} />
           <S.DescriptionText>매일</S.DescriptionText>
         </S.Description>
         <S.Description>
-          <Feather name="calendar" size={14} color={theme.colors.onSurfaceLow} />
+          <Feather name="calendar" size={14} color={theme.colors.content} />
           <S.DescriptionText>아카나</S.DescriptionText>
         </S.Description>
         <S.Description>
-          <Feather name="calendar" size={14} color={theme.colors.onSurfaceLow} />
+          <Feather name="calendar" size={14} color={theme.colors.content} />
           <S.DescriptionText>20g</S.DescriptionText>
         </S.Description>
       </S.Descriptions>

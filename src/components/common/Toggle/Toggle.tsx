@@ -5,7 +5,7 @@ import * as S from './Toggle.styles';
 
 interface Props {
   value: boolean;
-  onValueChange(value: boolean): void;
+  onValueChange: (value: boolean) => void;
   trackWidth?: number;
   trackHeight?: number;
   thumbSize?: number;
@@ -31,7 +31,7 @@ function Toggle({
 
   const trackColor = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [theme.colors.containerHigh, theme.colors.primary],
+    outputRange: [theme.colors.gray5, theme.colors.primary],
   });
 
   const thumbColor = animatedValue.interpolate({

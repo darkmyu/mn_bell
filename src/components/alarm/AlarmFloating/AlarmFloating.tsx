@@ -9,13 +9,13 @@ function AlarmFloating() {
     <S.Container>
       <S.Backdrop
         style={{
-          boxShadow: `0 -10px 10px ${theme.colors.surface}`,
+          boxShadow: `0 -10px 10px ${theme.colors.background}`,
         }}
       >
-        <S.Floating>
+        <S.Pressable>
           <FontAwesome5 name="plus" size={16} color={theme.colors.white} />
           <S.Text>빵이 일정 생성</S.Text>
-        </S.Floating>
+        </S.Pressable>
       </S.Backdrop>
     </S.Container>
   );

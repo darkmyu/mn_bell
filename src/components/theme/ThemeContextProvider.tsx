@@ -1,15 +1,15 @@
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { blackA, gray, grayDark, teal, tealDark, tomato, tomatoDark, whiteA } from '@radix-ui/colors';
-import { createContext, useContext, useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import { DefaultTheme, ThemeColors, ThemeFonts, ThemeProvider } from 'styled-components/native';
 
-interface Props {
-  children: React.ReactNode;
-}
-
 interface ThemeContextValue {
   isDark: boolean;
-  toggleTheme(): void;
+  toggleTheme: () => void;
+}
+
+interface Props {
+  children: React.ReactNode;
 }
 
 const initialValue: ThemeContextValue = {
@@ -35,28 +35,20 @@ const lightColors: ThemeColors = {
   white: whiteA.whiteA12,
   black: blackA.blackA12,
   primary: teal.teal9,
-  onPrimary: teal.teal1,
   secondary: tomato.tomato9,
-  onSecondary: tomato.tomato1,
-  surface: gray.gray3,
-  onSurfaceLow: gray.gray11,
-  onSurface: gray.gray12,
-  container: gray.gray1,
-  containerHigh: gray.gray5,
+  background: gray.gray3,
+  content: gray.gray12,
+  ...gray,
 };
 
 const darkColors: ThemeColors = {
   white: whiteA.whiteA12,
   black: blackA.blackA12,
   primary: tealDark.teal9,
-  onPrimary: tealDark.teal1,
   secondary: tomatoDark.tomato9,
-  onSecondary: tomatoDark.tomato1,
-  onSurfaceLow: grayDark.gray11,
-  surface: grayDark.gray3,
-  onSurface: grayDark.gray12,
-  container: grayDark.gray1,
-  containerHigh: grayDark.gray5,
+  background: grayDark.gray3,
+  content: grayDark.gray12,
+  ...grayDark,
 };
 
 const lightTheme: DefaultTheme = {

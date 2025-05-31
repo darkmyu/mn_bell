@@ -9,7 +9,7 @@ function ThemeStack() {
       screenOptions={{
         headerShown: false,
         contentStyle: {
-          backgroundColor: theme.colors.surface,
+          backgroundColor: theme.colors.background,
         },
       }}
     />

@@ -11,7 +11,7 @@ function ThemeSafeAreaView({ children }: Props) {
 
 const StyledSafeAreaView = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.surface};
+  background-color: ${(props) => props.theme.colors.background};
 `;
 
 export default ThemeSafeAreaView;

@@ -4,7 +4,7 @@ export const Container = styled.View`
   gap: 12px;
   padding: 16px;
   border-radius: 8px;
-  background-color: ${(props) => props.theme.colors.container};
+  background-color: ${(props) => props.theme.colors.gray1};
 `;
 
 export const Inner = styled.View`
@@ -35,7 +35,7 @@ export const Subject = styled.Text`
 export const Time = styled.Text`
   font-size: 32px;
   font-family: ${(props) => props.theme.fonts.bold};
-  color: ${(props) => props.theme.colors.onSurface};
+  color: ${(props) => props.theme.colors.content};
 `;
 
 export const Descriptions = styled.View`
@@ -52,6 +52,6 @@ export const Description = styled.View`
 `;
 
 export const DescriptionText = styled.Text`
-  color: ${(props) => props.theme.colors.onSurfaceLow};
+  color: ${(props) => props.theme.colors.content};
   font-family: ${(props) => props.theme.fonts.semiBold};
 `;
