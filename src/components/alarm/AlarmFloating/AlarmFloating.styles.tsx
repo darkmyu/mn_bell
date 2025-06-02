@@ -14,7 +14,7 @@ export const Backdrop = styled.View`
   background-color: ${(props) => props.theme.colors.background};
 `;
 
-export const Pressable = styled.Pressable`
+export const Floating = styled.View<{ pressed: boolean }>`
   height: 48px;
   display: flex;
   flex-direction: row;
@@ -23,6 +23,7 @@ export const Pressable = styled.Pressable`
   justify-content: center;
   border-radius: 12px;
   background-color: ${(props) => props.theme.colors.secondary};
+  opacity: ${({ pressed }) => (pressed ? 0.75 : 1)};
 `;
 
 export const Text = styled.Text`
