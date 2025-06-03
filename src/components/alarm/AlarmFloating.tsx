@@ -30,6 +30,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: 32,
     paddingHorizontal: 16,
     backgroundColor: theme.colors.background,
+    boxShadow: `0 -10px 10px ${theme.colors.background}`,
   },
   floating: (pressed: boolean) => ({
     height: 48,
