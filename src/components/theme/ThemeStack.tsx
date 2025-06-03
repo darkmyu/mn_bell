@@ -1,8 +1,8 @@
 import { Stack } from 'expo-router';
-import { useTheme } from 'styled-components/native';
+import { useUnistyles } from 'react-native-unistyles';
 
 function ThemeStack() {
-  const theme = useTheme();
+  const { theme } = useUnistyles();
 
   return (
     <Stack

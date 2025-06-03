@@ -1,17 +1,25 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
-import styled from 'styled-components/native';
+import React from 'react';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native-unistyles';
 
 interface Props {
   children: React.ReactNode;
 }
 
 function ThemeSafeAreaView({ children }: Props) {
-  return <StyledSafeAreaView>{children}</StyledSafeAreaView>;
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView edges={[]} style={styles.container}>
+        {children}
+      </SafeAreaView>
+    </SafeAreaProvider>
+  );
 }
 
-const StyledSafeAreaView = styled(SafeAreaView)`
-  flex: 1;
-  background-color: ${(props) => props.theme.colors.background};
-`;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default ThemeSafeAreaView;

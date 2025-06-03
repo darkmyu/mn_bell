@@ -1,5 +1,5 @@
 import { FlatList } from 'react-native';
-import AlarmCard from '../AlarmCard';
+import AlarmCard from '@/components/alarm/AlarmCard';
 
 function AlarmList() {
   return (
