@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native-unistyles';
 import { Text, View } from 'react-native';
 
-function Header() {
+function AlarmHeader() {
   return (
     <View style={styles.container}>
       <View style={styles.circle} />
@@ -31,4 +31,4 @@ const styles = StyleSheet.create((theme) => ({
   },
 }));
 
-export default Header;
+export default AlarmHeader;

@@ -1,14 +1,21 @@
 import { Pressable, Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import { useRouter } from 'expo-router';
+import { ROUTE_FORM_SCREEN } from '@/constants/route';
 
 function AlarmFloating() {
+  const router = useRouter();
   const { theme } = useUnistyles();
+
+  const handlePressed = () => {
+    router.push(ROUTE_FORM_SCREEN);
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.backdrop}>
-        <Pressable style={({ pressed }) => styles.floating(pressed)}>
+        <Pressable style={({ pressed }) => styles.floating(pressed)} onPress={handlePressed}>
           <FontAwesome5 name="plus" size={16} color={theme.colors.white} />
           <Text style={styles.text}>빵이 일정 생성</Text>
         </Pressable>
