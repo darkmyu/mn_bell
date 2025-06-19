@@ -1,5 +1,5 @@
-import { View } from 'react-native';
 import TimePicker from '@/components/picker/TimePicker';
+import { View } from 'react-native';
 
 export default function FormScreen() {
   return (

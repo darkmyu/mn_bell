@@ -1,6 +1,7 @@
+import React from 'react';
 import { StatusBar, View } from 'react-native';
-import { StyleSheet, UnistylesRuntime, useUnistyles } from 'react-native-unistyles';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet, UnistylesRuntime, useUnistyles } from 'react-native-unistyles';
 
 function ThemeStatusBar() {
   const { theme } = useUnistyles();

@@ -1,8 +1,8 @@
-import { useAnimatedTheme } from 'react-native-unistyles/reanimated';
-import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import { Pressable } from 'react-native';
-import { StyleSheet } from 'react-native-unistyles';
 import { useEffect } from 'react';
+import { Pressable } from 'react-native';
+import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { StyleSheet } from 'react-native-unistyles';
+import { useAnimatedTheme } from 'react-native-unistyles/reanimated';
 
 interface Props {
   value: boolean;

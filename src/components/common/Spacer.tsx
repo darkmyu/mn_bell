@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native-unistyles';
 import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 interface Props {
   width?: number;

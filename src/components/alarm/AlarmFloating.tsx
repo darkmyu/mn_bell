@@ -1,8 +1,8 @@
-import { Pressable, Text, View } from 'react-native';
-import { StyleSheet, useUnistyles } from 'react-native-unistyles';
+import { ROUTE_FORM_SCREEN } from '@/constants/route';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { useRouter } from 'expo-router';
-import { ROUTE_FORM_SCREEN } from '@/constants/route';
+import { Pressable, Text, View } from 'react-native';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 function AlarmFloating() {
   const router = useRouter();

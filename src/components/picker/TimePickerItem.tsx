@@ -1,8 +1,8 @@
-import React from 'react';
-import Animated, { Extrapolation, interpolate, SharedValue, useAnimatedStyle } from 'react-native-reanimated';
-import { Text } from 'react-native';
-import { StyleSheet } from 'react-native-unistyles';
 import { ITEM_HEIGHT } from '@/components/picker/TimePicker';
+import React from 'react';
+import { Text } from 'react-native';
+import Animated, { Extrapolation, interpolate, SharedValue, useAnimatedStyle } from 'react-native-reanimated';
+import { StyleSheet } from 'react-native-unistyles';
 
 interface Props {
   label: string;

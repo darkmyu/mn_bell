@@ -1,6 +1,6 @@
+import { blackA, gray, grayDark, teal, tealDark, tomato, tomatoDark, whiteA } from '@radix-ui/colors';
 import { StyleSheet, UnistylesRuntime } from 'react-native-unistyles';
 import { ThemeColors, ThemeFonts, ThemeValues } from './types';
-import { blackA, gray, grayDark, teal, tealDark, tomato, tomatoDark, whiteA } from '@radix-ui/colors';
 
 const fonts: ThemeFonts = {
   thin: 'Pretendard-Thin',

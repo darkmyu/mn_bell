@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import Toggle from '@/components/common/Toggle';
 import Feather from '@expo/vector-icons/Feather';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 

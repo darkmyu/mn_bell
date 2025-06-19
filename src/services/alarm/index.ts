@@ -1,4 +1,4 @@
-import { Alarm } from '@/types/alarm';
+import { Alarm } from '@/services/alarm/interface';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ALARM_STORAGE_KEY = 'alarm_storage_key';
