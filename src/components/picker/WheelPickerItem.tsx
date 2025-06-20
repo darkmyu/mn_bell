@@ -1,4 +1,3 @@
-import { ITEM_HEIGHT } from '@/components/picker/TimePicker';
 import React from 'react';
 import { Text } from 'react-native';
 import Animated, { Extrapolation, interpolate, SharedValue, useAnimatedStyle } from 'react-native-reanimated';
@@ -8,16 +7,17 @@ interface Props {
   label: string;
   index: number;
   scrollY: SharedValue<number>;
+  itemHeight: number;
 }
 
-function TimePickerItem({ label, index, scrollY }: Props) {
+function WheelPickerItem({ label, index, scrollY, itemHeight }: Props) {
   const animatedStyle = useAnimatedStyle(() => {
     const inputRange = [
-      (index - 2) * ITEM_HEIGHT,
-      (index - 1) * ITEM_HEIGHT,
-      index * ITEM_HEIGHT,
-      (index + 1) * ITEM_HEIGHT,
-      (index + 2) * ITEM_HEIGHT,
+      (index - 2) * itemHeight,
+      (index - 1) * itemHeight,
+      index * itemHeight,
+      (index + 1) * itemHeight,
+      (index + 2) * itemHeight,
     ];
 
     const opacity = interpolate(scrollY.value, inputRange, [0.4, 0.4, 1, 0.4, 0.4], Extrapolation.CLAMP);
@@ -28,7 +28,7 @@ function TimePickerItem({ label, index, scrollY }: Props) {
   });
 
   return (
-    <Animated.View style={[styles.container(ITEM_HEIGHT), animatedStyle]}>
+    <Animated.View style={[styles.container(itemHeight), animatedStyle]}>
       <Text style={styles.label}>{label}</Text>
     </Animated.View>
   );
@@ -37,13 +37,12 @@ function TimePickerItem({ label, index, scrollY }: Props) {
 const styles = StyleSheet.create((theme) => ({
   container: (height: number) => ({
     height,
-    alignItems: 'center',
-    justifyContent: 'center',
   }),
   label: {
     fontSize: 24,
     fontFamily: theme.fonts.bold,
+    color: theme.colors.content,
   },
 }));
 
-export default TimePickerItem;
+export default WheelPickerItem;
