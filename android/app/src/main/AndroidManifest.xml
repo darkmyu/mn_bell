@@ -25,7 +25,6 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="myapp"/>
-        <data android:scheme="com.bammyu.mnbell"/>
         <data android:scheme="exp+mn-bell"/>
       </intent-filter>
     </activity>
