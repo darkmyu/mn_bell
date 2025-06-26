@@ -1,5 +1,5 @@
 import WheelPickerItem from '@/components/picker/WheelPickerItem';
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 import Animated, {
   runOnJS,
@@ -10,7 +10,8 @@ import Animated, {
 import { StyleSheet } from 'react-native-unistyles';
 
 interface Props {
-  values: string[];
+  data: string[];
+  value: string;
   onValueChange: (value: string) => void;
   itemHeight?: number;
   itemVisibleCount?: number;
@@ -19,21 +20,31 @@ interface Props {
 }
 
 function WheelPicker({
-  values,
+  data,
+  value,
   onValueChange,
-  contentContainerStyle,
   itemHeight = 40,
   itemVisibleCount = 5,
   infiniteScroll,
+  contentContainerStyle,
 }: Props) {
   const scrollY = useSharedValue(0);
   const isMounted = useSharedValue(false);
   const flatListRef = useRef<Animated.FlatList<string>>(null);
 
-  const data = infiniteScroll ? Array(100).fill(values).flat() : values;
-  const initialScrollIndex = Math.floor(100 / 2) * values.length;
+  const initialData = infiniteScroll ? Array(100).fill(data).flat() : data;
   const containerHeight = itemHeight * itemVisibleCount;
   const contentPaddingVertical = (containerHeight - itemHeight) / 2;
+
+  const initialScrollIndex = useMemo(() => {
+    const selectedIndex = data.indexOf(value);
+    const validationIndex = selectedIndex > -1 ? selectedIndex : 0;
+
+    if (infiniteScroll) {
+      return Math.floor(100 / 2) * data.length + validationIndex;
+    }
+    return validationIndex;
+  }, [data, value, infiniteScroll]);
 
   const handleScroll = useAnimatedScrollHandler({
     onScroll: (event) => {
@@ -41,7 +52,7 @@ function WheelPicker({
     },
     onMomentumEnd: (event) => {
       const index = Math.round(event.contentOffset.y / itemHeight);
-      const selectedValue = data[index];
+      const selectedValue = initialData[index];
 
       if (selectedValue !== undefined) {
         runOnJS(onValueChange)(selectedValue);
@@ -66,11 +77,11 @@ function WheelPicker({
   useAnimatedReaction(
     () => isMounted.value,
     (mounted) => {
-      if (mounted && infiniteScroll) {
+      if (mounted) {
         runOnJS(scrollToIndex)(initialScrollIndex);
       }
     },
-    [initialScrollIndex, infiniteScroll],
+    [initialScrollIndex],
   );
 
   const renderItem = ({ item, index }: ListRenderItemInfo<string>) => {
@@ -80,7 +91,7 @@ function WheelPicker({
   return (
     <Animated.FlatList
       ref={flatListRef}
-      data={data}
+      data={initialData}
       renderItem={renderItem}
       keyExtractor={(_, index) => index.toString()}
       onScroll={handleScroll}
