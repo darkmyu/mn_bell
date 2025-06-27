@@ -1,4 +1,4 @@
-import { Alarm } from '@/services/alarm/interface';
+import { Alarm } from '@/services/alarm/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { v4 as uuidv4 } from 'uuid';
 
