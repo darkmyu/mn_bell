@@ -22,6 +22,8 @@ const lightColors: ThemeColors = {
   background: gray.gray3,
   content: gray.gray12,
   ...gray,
+  ...teal,
+  ...tomato,
 };
 
 const darkColors: ThemeColors = {
@@ -32,6 +34,8 @@ const darkColors: ThemeColors = {
   background: grayDark.gray3,
   content: grayDark.gray12,
   ...grayDark,
+  ...tealDark,
+  ...tomatoDark,
 };
 
 const lightTheme: ThemeValues = {

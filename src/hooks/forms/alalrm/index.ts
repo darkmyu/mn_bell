@@ -1,4 +1,4 @@
-import { ALARM_CATEGORY, ALARM_REPEAT } from '@/services/alarm/types';
+import { AlarmCategory, AlarmRepeat } from '@/services/alarm/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import dayjs from 'dayjs';
 import { useForm, useFormContext } from 'react-hook-form';
@@ -11,13 +11,13 @@ export const useAlarmCreateForm = () => {
       z.object({
         time: z.date(),
         title: z.string().optional(),
-        repeat: z.enum(ALARM_REPEAT),
-        category: z.enum(ALARM_CATEGORY).optional(),
+        repeat: z.enum(AlarmRepeat),
+        category: z.enum(AlarmCategory).optional(),
       }),
     ),
     defaultValues: {
       time: dayjs().toDate(),
-      repeat: ALARM_REPEAT.DAILY,
+      repeat: AlarmRepeat.DAILY,
     },
   });
 };
