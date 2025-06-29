@@ -1,6 +1,8 @@
 import { useAlarmCreateFormContext } from '@/hooks/forms/alalrm';
 import { AlarmRepeat, AlarmRepeatType } from '@/services/alarm/types';
-import { Pressable, Text, View } from 'react-native';
+import { useEffect } from 'react';
+import { LayoutChangeEvent, Pressable, Text, View } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 
 interface RepeatItem {
@@ -17,18 +19,46 @@ const repeatItems: RepeatItem[] = [
 function AlarmRepeatSelector() {
   const { setValue, watch } = useAlarmCreateFormContext();
 
+  const itemWidth = useSharedValue(0);
+  const translateX = useSharedValue(0);
+
+  const selectedRepeat = watch('repeat');
+  const selectedIndex = repeatItems.findIndex((item) => item.value === selectedRepeat);
+
+  const backdropAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: translateX.value }],
+    };
+  });
+
+  const handleLayout = (event: LayoutChangeEvent) => {
+    itemWidth.value = event.nativeEvent.layout.width;
+    translateX.value = selectedIndex * event.nativeEvent.layout.width;
+  };
+
   const handleRepeatPress = (repeat: AlarmRepeatType) => {
     setValue('repeat', repeat);
   };
 
+  useEffect(() => {
+    translateX.value = withSpring(selectedIndex * itemWidth.value, { stiffness: 200, damping: 20 });
+  }, [selectedIndex, itemWidth]);
+
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
+        <Animated.View style={[styles.backdrop, backdropAnimatedStyle]} />
+
         {repeatItems.map((item) => {
           const isSelected = watch('repeat') === item.value;
 
           return (
-            <Pressable key={item.value} style={styles.item(isSelected)} onPress={() => handleRepeatPress(item.value)}>
+            <Pressable
+              key={item.value}
+              style={styles.item}
+              onPress={() => handleRepeatPress(item.value)}
+              onLayout={handleLayout}
+            >
               <Text style={styles.text(isSelected)}>{item.label}</Text>
             </Pressable>
           );
@@ -45,18 +75,25 @@ const styles = StyleSheet.create((theme) => ({
     backgroundColor: theme.colors.gray1,
   },
   wrapper: {
+    position: 'relative',
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderRadius: 16,
   },
-  item: (isSelected: boolean) => ({
+  backdrop: {
+    position: 'absolute',
+    inset: 0,
+    width: `${100 / repeatItems.length}%`,
+    borderRadius: 16,
+    backgroundColor: theme.colors.gray3,
+  },
+  item: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
     borderRadius: 16,
-    backgroundColor: isSelected ? theme.colors.gray3 : undefined,
-  }),
+  },
   text: (isSelected: boolean) => ({
     fontSize: 14,
     fontFamily: isSelected ? theme.fonts.semiBold : theme.fonts.medium,
