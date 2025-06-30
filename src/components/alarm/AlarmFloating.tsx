@@ -34,7 +34,8 @@ const styles = StyleSheet.create((theme) => ({
   },
   backdrop: {
     width: '100%',
-    paddingVertical: 32,
+    paddingTop: 32,
+    paddingBottom: 48,
     paddingHorizontal: 16,
     backgroundColor: theme.colors.background,
     boxShadow: `0 -10px 10px ${theme.colors.background}`,

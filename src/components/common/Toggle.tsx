@@ -12,17 +12,7 @@ interface Props {
   thumbSize?: number;
 }
 
-const DEFAULT_TRACK_WIDTH = 52;
-const DEFAULT_TRACK_HEIGHT = 28;
-const DEFAULT_THUMB_SIZE = 24;
-
-function Toggle({
-  value,
-  onValueChange,
-  trackWidth = DEFAULT_TRACK_WIDTH,
-  trackHeight = DEFAULT_TRACK_HEIGHT,
-  thumbSize = DEFAULT_THUMB_SIZE,
-}: Props) {
+function Toggle({ value, onValueChange, trackWidth = 52, trackHeight = 28, thumbSize = 24 }: Props) {
   const theme = useAnimatedTheme();
   const animatedValue = useSharedValue(value ? 1 : 0);
 
