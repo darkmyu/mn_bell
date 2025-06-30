@@ -1,10 +1,12 @@
 import AlarmRepeatSelector from '@/components/alarm/AlarmRepeatSelector';
 import AlarmSummary from '@/components/alarm/AlarmSummary';
 import AlarmTimeSelector from '@/components/alarm/AlarmTimeSelector';
+import Spacer from '@/components/common/Spacer';
 import { useAlarmCreateForm } from '@/hooks/forms/alalrm';
 import React from 'react';
 import { FormProvider } from 'react-hook-form';
-import { Button, View } from 'react-native';
+import { Button } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import { StyleSheet, UnistylesRuntime } from 'react-native-unistyles';
 
 export default function FormScreen() {
@@ -12,7 +14,7 @@ export default function FormScreen() {
 
   return (
     <FormProvider {...methods}>
-      <View style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.container}>
         <AlarmSummary />
         <AlarmTimeSelector />
         <AlarmRepeatSelector />
@@ -21,7 +23,8 @@ export default function FormScreen() {
           title="Toggle Theme"
           onPress={() => UnistylesRuntime.setTheme(UnistylesRuntime.themeName === 'light' ? 'dark' : 'light')}
         />
-      </View>
+        <Spacer height={500} />
+      </ScrollView>
     </FormProvider>
   );
 }

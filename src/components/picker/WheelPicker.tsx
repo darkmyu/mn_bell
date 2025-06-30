@@ -26,7 +26,7 @@ function WheelPicker({
   const scrollY = useSharedValue(0);
   const flatListRef = useRef<Animated.FlatList<string>>(null);
 
-  const initialData = infiniteScroll ? Array(100).fill(data).flat() : data;
+  const initialData = infiniteScroll ? Array(10).fill(data).flat() : data;
   const containerHeight = itemHeight * itemVisibleCount;
   const contentPaddingVertical = (containerHeight - itemHeight) / 2;
 
@@ -47,7 +47,7 @@ function WheelPicker({
   const handleLayout = () => {
     const selectedIndex = data.indexOf(value);
     const validationIndex = selectedIndex > -1 ? selectedIndex : 0;
-    const initialScrollIndex = infiniteScroll ? Math.floor(100 / 2) * data.length + validationIndex : validationIndex;
+    const initialScrollIndex = infiniteScroll ? Math.floor(10 / 2) * data.length + validationIndex : validationIndex;
 
     flatListRef.current?.scrollToIndex({ index: initialScrollIndex, animated: false });
   };
@@ -73,6 +73,8 @@ function WheelPicker({
       getItemLayout={getItemLayout}
       snapToInterval={itemHeight}
       showsVerticalScrollIndicator={false}
+      decelerationRate="fast"
+      nestedScrollEnabled={true}
       style={styles.container(containerHeight)}
       contentContainerStyle={[styles.contentContainer(contentPaddingVertical), contentContainerStyle]}
     />
