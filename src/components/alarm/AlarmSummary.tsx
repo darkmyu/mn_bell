@@ -6,6 +6,8 @@ import 'dayjs/locale/ko';
 import { Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
+dayjs.locale('ko');
+
 function AlarmSummary() {
   const { theme } = useUnistyles();
   const { watch } = useAlarmCreateFormContext();
