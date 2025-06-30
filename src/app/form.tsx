@@ -1,5 +1,6 @@
 import AlarmRepeatSelector from '@/components/alarm/AlarmRepeatSelector';
-import AlarmTimePicker from '@/components/alarm/AlarmTimePicker';
+import AlarmSummary from '@/components/alarm/AlarmSummary';
+import AlarmTimeSelector from '@/components/alarm/AlarmTimeSelector';
 import { useAlarmCreateForm } from '@/hooks/forms/alalrm';
 import React from 'react';
 import { FormProvider } from 'react-hook-form';
@@ -12,12 +13,14 @@ export default function FormScreen() {
   return (
     <FormProvider {...methods}>
       <View style={styles.container}>
+        <AlarmSummary />
+        <AlarmTimeSelector />
+        <AlarmRepeatSelector />
+
         <Button
           title="Toggle Theme"
           onPress={() => UnistylesRuntime.setTheme(UnistylesRuntime.themeName === 'light' ? 'dark' : 'light')}
         />
-        <AlarmTimePicker />
-        <AlarmRepeatSelector />
       </View>
     </FormProvider>
   );
@@ -25,7 +28,8 @@ export default function FormScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    gap: 16,
-    margin: 16,
+    gap: 24,
+    marginVertical: 32,
+    marginHorizontal: 16,
   },
 });

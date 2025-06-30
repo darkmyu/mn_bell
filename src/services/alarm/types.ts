@@ -1,10 +1,21 @@
 export const AlarmRepeat = {
+  DAILY: 'DAILY',
+  WEEKLY: 'WEEKLY',
+  MONTHLY: 'MONTHLY',
+} as const;
+
+export const AlarmRepeatLabel = {
   DAILY: '매일',
   WEEKLY: '매주',
   MONTHLY: '매월',
 } as const;
 
 export const AlarmCategory = {
+  FOOD: 'FOOD',
+  WALK: 'WALK',
+} as const;
+
+export const AlarmCategoryLabel = {
   FOOD: '식사',
   WALK: '산책',
 } as const;

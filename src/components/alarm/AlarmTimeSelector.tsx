@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import WheelPicker from '../picker/WheelPicker';
 
-function AlarmTimePicker() {
+function AlarmTimeSelector() {
   const { watch, setValue } = useAlarmCreateFormContext();
 
   const time = watch('time');
@@ -46,4 +46,4 @@ const styles = StyleSheet.create((theme) => ({
   },
 }));
 
-export default AlarmTimePicker;
+export default AlarmTimeSelector;

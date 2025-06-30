@@ -1,20 +1,11 @@
 import { useAlarmCreateFormContext } from '@/hooks/forms/alalrm';
-import { AlarmRepeat, AlarmRepeatType } from '@/services/alarm/types';
+import { AlarmRepeat, AlarmRepeatLabel, AlarmRepeatType } from '@/services/alarm/types';
 import { useEffect } from 'react';
 import { LayoutChangeEvent, Pressable, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 
-interface RepeatItem {
-  label: string;
-  value: AlarmRepeatType;
-}
-
-const repeatItems: RepeatItem[] = [
-  { label: '매일', value: AlarmRepeat.DAILY },
-  { label: '매주', value: AlarmRepeat.WEEKLY },
-  { label: '매월', value: AlarmRepeat.MONTHLY },
-];
+const repeats: AlarmRepeatType[] = Object.values(AlarmRepeat);
 
 function AlarmRepeatSelector() {
   const { setValue, watch } = useAlarmCreateFormContext();
@@ -23,7 +14,7 @@ function AlarmRepeatSelector() {
   const translateX = useSharedValue(0);
 
   const selectedRepeat = watch('repeat');
-  const selectedIndex = repeatItems.findIndex((item) => item.value === selectedRepeat);
+  const selectedIndex = repeats.findIndex((repeat) => repeat === selectedRepeat);
 
   const backdropAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -49,17 +40,17 @@ function AlarmRepeatSelector() {
       <View style={styles.wrapper}>
         <Animated.View style={[styles.backdrop, backdropAnimatedStyle]} />
 
-        {repeatItems.map((item) => {
-          const isSelected = watch('repeat') === item.value;
+        {repeats.map((repeat) => {
+          const isSelected = repeat === selectedRepeat;
 
           return (
             <Pressable
-              key={item.value}
+              key={repeat}
               style={styles.item}
-              onPress={() => handleRepeatPress(item.value)}
+              onPress={() => handleRepeatPress(repeat)}
               onLayout={handleLayout}
             >
-              <Text style={styles.text(isSelected)}>{item.label}</Text>
+              <Text style={styles.text(isSelected)}>{AlarmRepeatLabel[repeat]}</Text>
             </Pressable>
           );
         })}
@@ -83,9 +74,9 @@ const styles = StyleSheet.create((theme) => ({
   backdrop: {
     position: 'absolute',
     inset: 0,
-    width: `${100 / repeatItems.length}%`,
+    width: `${100 / repeats.length}%`,
     borderRadius: 16,
-    backgroundColor: theme.colors.gray3,
+    backgroundColor: theme.colors.primary,
   },
   item: {
     flex: 1,
@@ -95,9 +86,9 @@ const styles = StyleSheet.create((theme) => ({
     borderRadius: 16,
   },
   text: (isSelected: boolean) => ({
-    fontSize: 14,
-    fontFamily: isSelected ? theme.fonts.semiBold : theme.fonts.medium,
-    color: isSelected ? theme.colors.content : theme.colors.gray10,
+    fontSize: 15,
+    fontFamily: isSelected ? theme.fonts.bold : theme.fonts.medium,
+    color: isSelected ? theme.colors.white : theme.colors.gray10,
   }),
 }));
 
