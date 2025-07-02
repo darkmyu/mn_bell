@@ -1,4 +1,4 @@
-import { useAlarmCreateFormContext } from '@/hooks/forms/alalrm';
+import { useAlarmCreateFormContext } from '@/hooks/forms/alarm';
 import { AlarmRepeat, AlarmRepeatLabel, AlarmRepeatType } from '@/services/alarm/types';
 import { useEffect } from 'react';
 import { LayoutChangeEvent, Pressable, Text, View } from 'react-native';

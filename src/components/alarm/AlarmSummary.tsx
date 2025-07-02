@@ -1,4 +1,4 @@
-import { useAlarmCreateFormContext } from '@/hooks/forms/alalrm';
+import { useAlarmCreateFormContext } from '@/hooks/forms/alarm';
 import { AlarmRepeatLabel } from '@/services/alarm/types';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import dayjs from 'dayjs';

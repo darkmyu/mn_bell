@@ -1,4 +1,4 @@
-import { useAlarmCreateFormContext } from '@/hooks/forms/alalrm';
+import { useAlarmCreateFormContext } from '@/hooks/forms/alarm';
 import dayjs from 'dayjs';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
