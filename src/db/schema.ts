@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const alarms = sqliteTable('alarms', {
@@ -9,8 +10,8 @@ export const alarms = sqliteTable('alarms', {
     .default('DAILY'),
   category: text('category', { enum: ['FOOD', 'WALK'] }),
   isActive: integer('is_active', { mode: 'boolean' }).notNull().default(true),
-  createdAt: text('created_at').notNull(),
-  updatedAt: text('updated_at').notNull(),
+  createdAt: text('created_at').notNull().default(dayjs().toISOString()),
+  updatedAt: text('updated_at').notNull().default(dayjs().toISOString()),
 });
 
 export type AlarmSchema = typeof alarms.$inferSelect;
