@@ -7,7 +7,7 @@ import { FormProvider } from 'react-hook-form';
 import { ScrollView } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native-unistyles';
 
-export default function FormScreen() {
+export default async function FormScreen() {
   const methods = useAlarmCreateForm();
 
   return (

@@ -1,3 +1,4 @@
+import DatabaseProvider from '@/components/provider/DatabaseProvider';
 import PretendardFontProvider from '@/components/provider/PretendardFontProvider';
 import TanStackQueryProvider from '@/components/provider/TanStackQueryProvider';
 import ThemeSafeAreaView from '@/components/theme/ThemeSafeAreaView';
@@ -12,12 +13,14 @@ export default function RootLayout() {
   return (
     <TanStackQueryProvider>
       <PretendardFontProvider>
-        <GestureHandlerRootView>
-          <ThemeSafeAreaView>
-            <ThemeStatusBar />
-            <ThemeStack />
-          </ThemeSafeAreaView>
-        </GestureHandlerRootView>
+        <DatabaseProvider>
+          <GestureHandlerRootView>
+            <ThemeSafeAreaView>
+              <ThemeStatusBar />
+              <ThemeStack />
+            </ThemeSafeAreaView>
+          </GestureHandlerRootView>
+        </DatabaseProvider>
       </PretendardFontProvider>
     </TanStackQueryProvider>
   );
