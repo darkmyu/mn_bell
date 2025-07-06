@@ -16,3 +16,5 @@ export const alarms = sqliteTable('alarms', {
 
 export type AlarmSchema = typeof alarms.$inferSelect;
 export type AlarmInsert = typeof alarms.$inferInsert;
+export type AlarmCreate = Omit<AlarmInsert, 'id' | 'isActive' | 'createdAt' | 'updatedAt'>;
+export type AlarmUpdate = Partial<Omit<AlarmInsert, 'id' | 'createdAt' | 'updatedAt'>>;

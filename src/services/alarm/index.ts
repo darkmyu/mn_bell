@@ -1,4 +1,4 @@
-import { AlarmInsert, AlarmSchema, alarms } from '@/db/schema';
+import { AlarmCreate, AlarmSchema, AlarmUpdate, alarms } from '@/db/schema';
 import { useDatabaseContext } from '@/hooks/useDatabaseContext';
 import { eq } from 'drizzle-orm';
 
@@ -14,17 +14,12 @@ export const useAlarmService = () => {
     return result[0];
   };
 
-  const createAlarm = async (
-    alarm: Omit<AlarmInsert, 'id' | 'isActive' | 'createdAt' | 'updatedAt'>,
-  ): Promise<AlarmSchema> => {
+  const createAlarm = async (alarm: AlarmCreate): Promise<AlarmSchema> => {
     const result = await db.insert(alarms).values(alarm).returning();
     return result[0];
   };
 
-  const updateAlarm = async (
-    id: number,
-    alarm: Partial<Omit<AlarmInsert, 'id' | 'createdAt' | 'updatedAt'>>,
-  ): Promise<AlarmSchema> => {
+  const updateAlarm = async (id: number, alarm: AlarmUpdate): Promise<AlarmSchema> => {
     const updatedAlarm = {
       ...alarm,
       updatedAt: new Date().toISOString(),
