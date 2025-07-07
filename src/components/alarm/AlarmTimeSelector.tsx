@@ -10,11 +10,11 @@ function AlarmTimeSelector() {
   const time = watch('time');
 
   const handleHourChange = (value: string) => {
-    setValue('time', dayjs(time).set('hour', parseInt(value)).toDate());
+    setValue('time', dayjs(time).set('hour', parseInt(value)).toString());
   };
 
   const handleMinuteChange = (value: string) => {
-    setValue('time', dayjs(time).set('minute', parseInt(value)).toDate());
+    setValue('time', dayjs(time).set('minute', parseInt(value)).toString());
   };
 
   return (

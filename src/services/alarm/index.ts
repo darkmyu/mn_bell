@@ -1,28 +1,30 @@
-import { AlarmCreate, AlarmSchema, AlarmUpdate, alarms } from '@/db/schema';
+import { alarms } from '@/db/schema';
+import { Alarm, AlarmCreate, AlarmUpdate } from '@/db/types';
 import { useDatabaseContext } from '@/hooks/useDatabaseContext';
+import dayjs from 'dayjs';
 import { eq } from 'drizzle-orm';
 
 export const useAlarmService = () => {
   const db = useDatabaseContext();
 
-  const getAlarms = async (): Promise<AlarmSchema[]> => {
+  const getAlarms = async (): Promise<Alarm[]> => {
     return await db.select().from(alarms);
   };
 
-  const getAlarm = async (id: number): Promise<AlarmSchema> => {
+  const getAlarm = async (id: number): Promise<Alarm> => {
     const result = await db.select().from(alarms).where(eq(alarms.id, id));
     return result[0];
   };
 
-  const createAlarm = async (alarm: AlarmCreate): Promise<AlarmSchema> => {
+  const createAlarm = async (alarm: AlarmCreate): Promise<Alarm> => {
     const result = await db.insert(alarms).values(alarm).returning();
     return result[0];
   };
 
-  const updateAlarm = async (id: number, alarm: AlarmUpdate): Promise<AlarmSchema> => {
+  const updateAlarm = async (id: number, alarm: AlarmUpdate): Promise<Alarm> => {
     const updatedAlarm = {
       ...alarm,
-      updatedAt: new Date().toISOString(),
+      updatedAt: dayjs().toString(),
     };
 
     const result = await db.update(alarms).set(updatedAlarm).where(eq(alarms.id, id)).returning();

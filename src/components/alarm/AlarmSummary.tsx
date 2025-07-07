@@ -1,5 +1,5 @@
+import { AlarmRepeatValue } from '@/db/types';
 import { useAlarmCreateFormContext } from '@/hooks/forms/alarm';
-import { AlarmRepeatLabel } from '@/services/alarm/types';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
@@ -14,7 +14,7 @@ function AlarmSummary() {
 
   const time = watch('time');
   const repeat = watch('repeat');
-  const repeatLabel = AlarmRepeatLabel[repeat];
+  const repeatLabel = AlarmRepeatValue[repeat];
   const formattedTime = dayjs(time).format('A HH시 mm분');
 
   return (

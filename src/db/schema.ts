@@ -5,16 +5,9 @@ export const alarms = sqliteTable('alarms', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   time: text('time').notNull(),
   title: text('title'),
-  repeat: text('repeat', { enum: ['DAILY', 'WEEKLY', 'MONTHLY'] })
-    .notNull()
-    .default('DAILY'),
+  repeat: text('repeat', { enum: ['DAILY', 'WEEKLY', 'MONTHLY'] }).notNull(),
   category: text('category', { enum: ['FOOD', 'WALK'] }),
   isActive: integer('is_active', { mode: 'boolean' }).notNull().default(true),
-  createdAt: text('created_at').notNull().default(dayjs().toISOString()),
-  updatedAt: text('updated_at').notNull().default(dayjs().toISOString()),
+  createdAt: text('created_at').notNull().default(dayjs().toString()),
+  updatedAt: text('updated_at').notNull().default(dayjs().toString()),
 });
-
-export type AlarmSchema = typeof alarms.$inferSelect;
-export type AlarmInsert = typeof alarms.$inferInsert;
-export type AlarmCreate = Omit<AlarmInsert, 'id' | 'isActive' | 'createdAt' | 'updatedAt'>;
-export type AlarmUpdate = Partial<Omit<AlarmInsert, 'id' | 'createdAt' | 'updatedAt'>>;

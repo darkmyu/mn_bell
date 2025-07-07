@@ -25,6 +25,7 @@
     "babel-plugin-inline-import": "^3.0.0",
     "dayjs": "^1.11.13",
     "drizzle-orm": "^0.44.2",
+    "drizzle-zod": "^0.8.2",
     "expo": "~53.0.12",
     "expo-blur": "~14.1.5",
     "expo-constants": "~17.1.6",

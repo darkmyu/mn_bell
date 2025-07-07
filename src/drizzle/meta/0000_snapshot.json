@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "7249c64f-0ae1-4850-ac80-071e1753392c",
+  "id": "3c932590-7b37-4981-b615-b85f4d1126b2",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "alarms": {
@@ -56,14 +56,16 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "autoincrement": false,
+          "default": "'Mon, 07 Jul 2025 03:05:54 GMT'"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "autoincrement": false,
+          "default": "'Mon, 07 Jul 2025 03:05:54 GMT'"
         }
       },
       "indexes": {},

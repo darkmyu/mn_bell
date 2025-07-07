@@ -1,11 +1,11 @@
+import { AlarmRepeat, AlarmRepeatKey, AlarmRepeatValue } from '@/db/types';
 import { useAlarmCreateFormContext } from '@/hooks/forms/alarm';
-import { AlarmRepeat, AlarmRepeatLabel, AlarmRepeatType } from '@/services/alarm/types';
 import { useEffect } from 'react';
 import { LayoutChangeEvent, Pressable, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 
-const repeats: AlarmRepeatType[] = Object.values(AlarmRepeat);
+const repeats: AlarmRepeat[] = Object.values(AlarmRepeatKey);
 
 function AlarmRepeatSelector() {
   const { setValue, watch } = useAlarmCreateFormContext();
@@ -27,7 +27,7 @@ function AlarmRepeatSelector() {
     translateX.value = selectedIndex * event.nativeEvent.layout.width;
   };
 
-  const handleRepeatPress = (repeat: AlarmRepeatType) => {
+  const handleRepeatPress = (repeat: AlarmRepeat) => {
     setValue('repeat', repeat);
   };
 
@@ -50,7 +50,7 @@ function AlarmRepeatSelector() {
               onPress={() => handleRepeatPress(repeat)}
               onLayout={handleLayout}
             >
-              <Text style={styles.text(isSelected)}>{AlarmRepeatLabel[repeat]}</Text>
+              <Text style={styles.text(isSelected)}>{AlarmRepeatValue[repeat]}</Text>
             </Pressable>
           );
         })}
