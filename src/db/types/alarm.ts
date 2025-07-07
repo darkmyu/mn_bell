@@ -1,6 +1,6 @@
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 import * as z from 'zod/v4';
-import { alarms } from './schema';
+import { alarms } from '../schema';
 
 export const AlarmRepeatKey = {
   DAILY: 'DAILY',

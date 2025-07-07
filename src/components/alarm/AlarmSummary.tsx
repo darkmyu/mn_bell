@@ -1,4 +1,4 @@
-import { AlarmRepeatValue } from '@/db/types';
+import { AlarmRepeatValue } from '@/db/types/alarm';
 import { useAlarmCreateFormContext } from '@/hooks/forms/alarm';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import dayjs from 'dayjs';

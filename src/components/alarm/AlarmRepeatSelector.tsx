@@ -1,4 +1,4 @@
-import { AlarmRepeat, AlarmRepeatKey, AlarmRepeatValue } from '@/db/types';
+import { AlarmRepeat, AlarmRepeatKey, AlarmRepeatValue } from '@/db/types/alarm';
 import { useAlarmCreateFormContext } from '@/hooks/forms/alarm';
 import { useEffect } from 'react';
 import { LayoutChangeEvent, Pressable, Text, View } from 'react-native';

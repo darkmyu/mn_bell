@@ -1,4 +1,4 @@
-import { AlarmCreate, AlarmRepeatKey, alarmCreateSchema } from '@/db/types';
+import { AlarmCreate, AlarmRepeatKey, alarmCreateSchema } from '@/db/types/alarm';
 import { zodResolver } from '@hookform/resolvers/zod';
 import dayjs from 'dayjs';
 import { useForm, useFormContext } from 'react-hook-form';
