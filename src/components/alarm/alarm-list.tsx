@@ -1,4 +1,4 @@
-import AlarmCard from '@/components/alarm/AlarmCard';
+import AlarmCard from '@/components/alarm/alarm-card';
 import { FlatList } from 'react-native';
 
 function AlarmList() {

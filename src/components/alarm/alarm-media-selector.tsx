@@ -1,7 +1,7 @@
 import Feather from '@expo/vector-icons/Feather';
 import { Pressable, Text, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import Toggle from '../common/Toggle';
+import Toggle from '../common/toggle';
 
 function AlarmMediaSelector() {
   const { theme } = useUnistyles();

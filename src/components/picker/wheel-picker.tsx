@@ -1,4 +1,4 @@
-import WheelPickerItem from '@/components/picker/WheelPickerItem';
+import WheelPickerItem from '@/components/picker/wheel-picker-item';
 import React, { useRef } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
 import Animated, { runOnJS, useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';

@@ -1,8 +1,8 @@
-import AlarmMediaSelector from '@/components/alarm/AlarmMediaSelector';
-import AlarmRepeatSelector from '@/components/alarm/AlarmRepeatSelector';
-import AlarmSummary from '@/components/alarm/AlarmSummary';
-import AlarmTimeSelector from '@/components/alarm/AlarmTimeSelector';
-import Button from '@/components/common/Button';
+import AlarmMediaSelector from '@/components/alarm/alarm-media-selector';
+import AlarmRepeatSelector from '@/components/alarm/alarm-repeat-selector';
+import AlarmSummary from '@/components/alarm/alarm-summary';
+import AlarmTimeSelector from '@/components/alarm/alarm-time-selector';
+import Button from '@/components/common/button';
 import { useAlarmCreateForm } from '@/hooks/forms/alarm';
 import React from 'react';
 import { FormProvider } from 'react-hook-form';

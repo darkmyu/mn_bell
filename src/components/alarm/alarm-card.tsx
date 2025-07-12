@@ -1,4 +1,4 @@
-import Toggle from '@/components/common/Toggle';
+import Toggle from '@/components/common/toggle';
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import React, { useState } from 'react';

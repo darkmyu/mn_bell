@@ -3,7 +3,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { useRouter } from 'expo-router';
 import { View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-import Button from '../common/Button';
+import Button from '../common/button';
 
 function AlarmFloating() {
   const router = useRouter();
