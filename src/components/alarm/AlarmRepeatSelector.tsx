@@ -61,7 +61,7 @@ function AlarmRepeatSelector() {
 
 const styles = StyleSheet.create((theme) => ({
   container: {
-    padding: 16,
+    padding: 20,
     borderRadius: 8,
     backgroundColor: theme.colors.gray1,
   },

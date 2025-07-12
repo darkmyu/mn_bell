@@ -40,7 +40,7 @@ function AlarmTimeSelector() {
 const styles = StyleSheet.create((theme) => ({
   container: {
     flexDirection: 'row',
-    padding: 16,
+    padding: 20,
     borderRadius: 8,
     backgroundColor: theme.colors.gray1,
   },

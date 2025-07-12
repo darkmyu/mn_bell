@@ -1,3 +1,4 @@
+import AlarmMediaSelector from '@/components/alarm/AlarmMediaSelector';
 import AlarmRepeatSelector from '@/components/alarm/AlarmRepeatSelector';
 import AlarmSummary from '@/components/alarm/AlarmSummary';
 import AlarmTimeSelector from '@/components/alarm/AlarmTimeSelector';
@@ -19,6 +20,7 @@ export default function FormScreen() {
           <AlarmSummary />
           <AlarmTimeSelector />
           <AlarmRepeatSelector />
+          <AlarmMediaSelector />
         </ScrollView>
         <View style={styles.floating}>
           <Button title="저장하기" onPress={() => {}} />
