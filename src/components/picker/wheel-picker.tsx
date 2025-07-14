@@ -1,6 +1,7 @@
 import WheelPickerItem from '@/components/picker/wheel-picker-item';
 import React, { useRef } from 'react';
 import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import Animated, { runOnJS, useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 
@@ -14,6 +15,8 @@ interface Props {
   contentContainerStyle?: StyleProp<ViewStyle>;
 }
 
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList<string>);
+
 function WheelPicker({
   data,
   value,
@@ -24,7 +27,7 @@ function WheelPicker({
   contentContainerStyle,
 }: Props) {
   const scrollY = useSharedValue(0);
-  const flatListRef = useRef<Animated.FlatList<string>>(null);
+  const flatListRef = useRef<FlatList<string>>(null);
 
   const initialData = infiniteScroll ? Array(10).fill(data).flat() : data;
   const containerHeight = itemHeight * itemVisibleCount;
@@ -63,7 +66,7 @@ function WheelPicker({
   };
 
   return (
-    <Animated.FlatList
+    <AnimatedFlatList
       ref={flatListRef}
       data={initialData}
       renderItem={renderItem}
@@ -74,7 +77,6 @@ function WheelPicker({
       snapToInterval={itemHeight}
       showsVerticalScrollIndicator={false}
       decelerationRate="fast"
-      nestedScrollEnabled={true}
       style={styles.container(containerHeight)}
       contentContainerStyle={[styles.contentContainer(contentPaddingVertical), contentContainerStyle]}
     />
