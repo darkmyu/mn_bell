@@ -2,9 +2,9 @@ import { useAlarmCreateFormContext } from '@/hooks/forms/alarm';
 import dayjs from 'dayjs';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import WheelPicker from '../picker/wheel-picker';
+import WheelPicker from '../../picker/wheel-picker';
 
-function AlarmTimeSelector() {
+function AlarmTimeForm() {
   const { watch, setValue } = useAlarmCreateFormContext();
 
   const time = watch('time');
@@ -40,10 +40,11 @@ function AlarmTimeSelector() {
 const styles = StyleSheet.create((theme) => ({
   container: {
     flexDirection: 'row',
-    padding: 20,
+    paddingVertical: 28,
+    paddingHorizontal: 20,
     borderRadius: 8,
     backgroundColor: theme.colors.gray1,
   },
 }));
 
-export default AlarmTimeSelector;
+export default AlarmTimeForm;

@@ -1,4 +1,4 @@
-import { ROUTE_FORM_SCREEN } from '@/constants/route';
+import { ROUTE_ALARM_FORM_SCREEN } from '@/constants/route';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { useRouter } from 'expo-router';
 import { View } from 'react-native';
@@ -10,7 +10,7 @@ function AlarmFloating() {
   const { theme } = useUnistyles();
 
   const handlePressed = () => {
-    router.push(ROUTE_FORM_SCREEN);
+    router.push(ROUTE_ALARM_FORM_SCREEN);
   };
 
   return (

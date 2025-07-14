@@ -8,7 +8,7 @@ import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 dayjs.locale('ko');
 
-function AlarmSummary() {
+function AlarmSummaryForm() {
   const { theme } = useUnistyles();
   const { watch } = useAlarmCreateFormContext();
 
@@ -38,4 +38,4 @@ const styles = StyleSheet.create((theme) => ({
   },
 }));
 
-export default AlarmSummary;
+export default AlarmSummaryForm;
