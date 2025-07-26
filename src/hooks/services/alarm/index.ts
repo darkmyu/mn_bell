@@ -1,6 +1,6 @@
 import { alarms } from '@/db/schema';
 import { Alarm, AlarmCreate, AlarmUpdate } from '@/db/types/alarm';
-import { useDatabaseContext } from '@/hooks/useDatabaseContext';
+import { useDatabaseContext } from '@/hooks/use-database-context';
 import dayjs from 'dayjs';
 import { eq } from 'drizzle-orm';
 

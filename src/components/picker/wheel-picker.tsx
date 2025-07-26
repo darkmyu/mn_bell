@@ -77,6 +77,7 @@ function WheelPicker({
       snapToInterval={itemHeight}
       showsVerticalScrollIndicator={false}
       decelerationRate="fast"
+      nestedScrollEnabled={true}
       style={styles.container(containerHeight)}
       contentContainerStyle={[styles.contentContainer(contentPaddingVertical), contentContainerStyle]}
     />

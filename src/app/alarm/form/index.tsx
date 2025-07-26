@@ -4,32 +4,28 @@ import AlarmTimeForm from '@/components/alarm/form/alarm-time-form';
 import Button from '@/components/common/button';
 import React from 'react';
 import { View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native-unistyles';
 
 export default function AlarmFormScreen() {
   return (
-    <>
-      <FlatList
-        data={[]}
-        renderItem={null}
-        showsVerticalScrollIndicator={false}
-        ListEmptyComponent={() => (
-          <View style={styles.form}>
-            <AlarmSummaryForm />
-            <AlarmTimeForm />
-            <AlarmOptionsForm />
-          </View>
-        )}
-      />
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.form} showsVerticalScrollIndicator={false}>
+        <AlarmSummaryForm />
+        <AlarmTimeForm />
+        <AlarmOptionsForm />
+      </ScrollView>
       <View style={styles.floating}>
         <Button title="저장하기" onPress={() => {}} />
       </View>
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   form: {
     gap: 16,
     paddingTop: 32,
