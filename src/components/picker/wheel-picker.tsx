@@ -33,6 +33,10 @@ function WheelPicker({
   const containerHeight = itemHeight * itemVisibleCount;
   const contentPaddingVertical = (containerHeight - itemHeight) / 2;
 
+  const selectedIndex = data.indexOf(value);
+  const validationIndex = selectedIndex > -1 ? selectedIndex : 0;
+  const initialScrollIndex = infiniteScroll ? Math.floor(10 / 2) * data.length + validationIndex : validationIndex;
+
   const handleScroll = useAnimatedScrollHandler({
     onScroll: (event) => {
       scrollY.value = event.contentOffset.y;
@@ -46,14 +50,6 @@ function WheelPicker({
       }
     },
   });
-
-  const handleLayout = () => {
-    const selectedIndex = data.indexOf(value);
-    const validationIndex = selectedIndex > -1 ? selectedIndex : 0;
-    const initialScrollIndex = infiniteScroll ? Math.floor(10 / 2) * data.length + validationIndex : validationIndex;
-
-    flatListRef.current?.scrollToIndex({ index: initialScrollIndex, animated: false });
-  };
 
   const getItemLayout = (_: unknown, index: number) => ({
     length: itemHeight,
@@ -72,12 +68,11 @@ function WheelPicker({
       renderItem={renderItem}
       keyExtractor={(_, index) => index.toString()}
       onScroll={handleScroll}
-      onLayout={handleLayout}
       getItemLayout={getItemLayout}
+      initialScrollIndex={initialScrollIndex}
       snapToInterval={itemHeight}
       showsVerticalScrollIndicator={false}
       decelerationRate="fast"
-      nestedScrollEnabled={true}
       style={styles.container(containerHeight)}
       contentContainerStyle={[styles.contentContainer(contentPaddingVertical), contentContainerStyle]}
     />
