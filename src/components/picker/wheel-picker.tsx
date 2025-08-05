@@ -1,8 +1,14 @@
 import WheelPickerItem from '@/components/picker/wheel-picker-item';
-import React, { useRef } from 'react';
-import { ListRenderItemInfo, StyleProp, ViewStyle } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
-import Animated, { runOnJS, useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
+import React, { useEffect } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import Animated, {
+  runOnJS,
+  scrollTo,
+  useAnimatedRef,
+  useAnimatedScrollHandler,
+  useSharedValue,
+} from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 
 interface Props {
@@ -15,7 +21,7 @@ interface Props {
   contentContainerStyle?: StyleProp<ViewStyle>;
 }
 
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList<string>);
+const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 
 function WheelPicker({
   data,
@@ -27,55 +33,69 @@ function WheelPicker({
   contentContainerStyle,
 }: Props) {
   const scrollY = useSharedValue(0);
-  const flatListRef = useRef<FlatList<string>>(null);
+  const scrollIndex = useSharedValue(0);
+  const scrollViewRef = useAnimatedRef<ScrollView>();
 
-  const initialData = infiniteScroll ? Array(10).fill(data).flat() : data;
   const containerHeight = itemHeight * itemVisibleCount;
   const contentPaddingVertical = (containerHeight - itemHeight) / 2;
 
+  const initialData = infiniteScroll ? Array(3).fill(data).flat() : data;
+
   const selectedIndex = data.indexOf(value);
   const validationIndex = selectedIndex > -1 ? selectedIndex : 0;
-  const initialScrollIndex = infiniteScroll ? Math.floor(10 / 2) * data.length + validationIndex : validationIndex;
+  const initialScrollPosition = infiniteScroll
+    ? (Math.floor(3 / 2) * data.length + validationIndex) * itemHeight
+    : validationIndex * itemHeight;
 
   const handleScroll = useAnimatedScrollHandler({
     onScroll: (event) => {
       scrollY.value = event.contentOffset.y;
+      scrollIndex.value = Math.round(event.contentOffset.y / itemHeight);
+    },
+    onEndDrag: (event) => {
+      const targetIndex = Math.round(event.contentOffset.y / itemHeight);
+      const targetOffset = targetIndex * itemHeight;
+
+      if (scrollViewRef.current) {
+        scrollTo(scrollViewRef, 0, targetOffset, true);
+      }
     },
     onMomentumEnd: (event) => {
       const index = Math.round(event.contentOffset.y / itemHeight);
       const selectedValue = initialData[index];
 
       if (selectedValue !== undefined) {
-        runOnJS(onValueChange)(selectedValue);
+        const originalValue = infiniteScroll ? data[index % data.length] : selectedValue;
+        runOnJS(onValueChange)(originalValue);
       }
     },
   });
 
-  const getItemLayout = (_: unknown, index: number) => ({
-    length: itemHeight,
-    offset: itemHeight * index,
-    index,
-  });
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (scrollViewRef.current) {
+        scrollY.value = initialScrollPosition;
+        scrollViewRef.current.scrollTo({ y: initialScrollPosition, animated: false });
+      }
+    }, 100);
 
-  const renderItem = ({ item, index }: ListRenderItemInfo<string>) => {
-    return <WheelPickerItem label={item} index={index} scrollY={scrollY} itemHeight={itemHeight} />;
-  };
+    return () => clearTimeout(timer);
+  }, [initialScrollPosition, scrollY]);
 
   return (
-    <AnimatedFlatList
-      ref={flatListRef}
-      data={initialData}
-      renderItem={renderItem}
-      keyExtractor={(_, index) => index.toString()}
+    <AnimatedScrollView
+      ref={scrollViewRef}
       onScroll={handleScroll}
-      getItemLayout={getItemLayout}
-      initialScrollIndex={initialScrollIndex}
-      snapToInterval={itemHeight}
+      scrollEventThrottle={16}
       showsVerticalScrollIndicator={false}
       decelerationRate="fast"
       style={styles.container(containerHeight)}
       contentContainerStyle={[styles.contentContainer(contentPaddingVertical), contentContainerStyle]}
-    />
+    >
+      {initialData.map((item, index) => (
+        <WheelPickerItem key={index} label={item} index={index} scrollY={scrollY} itemHeight={itemHeight} />
+      ))}
+    </AnimatedScrollView>
   );
 }
 
