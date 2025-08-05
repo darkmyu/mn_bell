@@ -4,25 +4,18 @@ import AlarmTimeForm from '@/components/alarm/form/alarm-time-form';
 import Button from '@/components/common/button';
 import Spacer from '@/components/common/spacer';
 import React from 'react';
-import { View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { ScrollView, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 export default function AlarmFormScreen() {
   return (
     <View style={styles.container}>
-      <FlatList
-        data={null}
-        renderItem={null}
-        ListEmptyComponent={
-          <View style={styles.form}>
-            <AlarmSummaryForm />
-            <AlarmTimeForm />
-            <AlarmOptionsForm />
-            <Spacer height={4000} />
-          </View>
-        }
-      />
+      <ScrollView contentContainerStyle={styles.form} showsVerticalScrollIndicator={false}>
+        <AlarmSummaryForm />
+        <AlarmTimeForm />
+        <AlarmOptionsForm />
+        <Spacer height={4000} />
+      </ScrollView>
       <View style={styles.floating}>
         <Button title="저장하기" onPress={() => {}} />
       </View>
