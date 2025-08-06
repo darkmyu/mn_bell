@@ -1,5 +1,5 @@
 import WheelPickerItem from '@/components/picker/wheel-picker-item';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Animated, {
@@ -71,24 +71,20 @@ function WheelPicker({
     },
   });
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (scrollViewRef.current) {
-        scrollY.value = initialScrollPosition;
-        scrollViewRef.current.scrollTo({ y: initialScrollPosition, animated: false });
-      }
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [initialScrollPosition, scrollY]);
+  const handleLayout = () => {
+    scrollY.value = initialScrollPosition;
+    scrollViewRef.current?.scrollTo({ y: initialScrollPosition, animated: false });
+  };
 
   return (
     <AnimatedScrollView
       ref={scrollViewRef}
       onScroll={handleScroll}
+      onLayout={handleLayout}
       scrollEventThrottle={16}
       showsVerticalScrollIndicator={false}
       decelerationRate="fast"
+      snapToInterval={itemHeight}
       style={styles.container(containerHeight)}
       contentContainerStyle={[styles.contentContainer(contentPaddingVertical), contentContainerStyle]}
     >
