@@ -62,11 +62,18 @@ function WheelPicker({
     },
     onMomentumEnd: (event) => {
       const index = Math.round(event.contentOffset.y / itemHeight);
-      const selectedValue = initialData[index];
-
-      if (selectedValue !== undefined) {
-        const originalValue = infiniteScroll ? data[index % data.length] : selectedValue;
+      const originalValue = data[index % data.length];
+      if (originalValue !== undefined) {
         runOnJS(onValueChange)(originalValue);
+      }
+
+      if (infiniteScroll) {
+        const length = data.length;
+        if (index < length || index >= 2 * length) {
+          const newIndex = length + (index % length);
+          const newOffset = newIndex * itemHeight;
+          scrollTo(scrollViewRef, 0, newOffset, false);
+        }
       }
     },
   });
